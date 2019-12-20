@@ -83,16 +83,17 @@
 
         function setResult(label, result) {
             console.log("Got result: ");
+            alert('Scanned')
             console.log(result);
             db.collection("Selectusers").doc(result).get().then((doc) => {
-                if(doc.exists){
-                    db.collection("Selectusers").doc(result).set({attended: true}, {merge: true});
+                if (doc.exists) {
+                    db.collection("Selectusers").doc(result).set({ attended: true }, { merge: true });
                     console.log('===========================================');
                     label.textContent = doc.data().Name;
                     camQrResultTimestamp.textContent = doc.data().school;
                     label.style.color = 'teal';
                 }
-                    
+
             });
 
             label.textContent = result;
